@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, Button, TextInput, ScrollView, StyleSheet, Alert} from 'react-native';
+import {View, TextInput, StyleSheet, Image, TouchableOpacity, Text, Alert} from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const CreateMuseoHome = (props) => {
     
@@ -12,22 +13,38 @@ const CreateMuseoHome = (props) => {
     }
 
     const goNextPage = () => {
-        if (state.mistake === '') {
-            alert("NO")
-        } else {
+        if (state.mistake === 'MUSEO') {
             props.navigation.navigate("CreateMuseoMistake")
+        } else {
+            Alert.alert("","Lo sentimos, vuelva a intentarlo") //TODO: cambiarlo por un Modal - React Native
         }
     }
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.inputGroup}>
-                <TextInput 
-                    placeholder="Mistake" 
-                    onChangeText={(value) => handleChangeText("mistake", value)}/>
+            <View style={styles.centered}>
+                <Image 
+                    style={styles.image}
+                    source={require('../assets/museoa.png')}
+                />
             </View>
             <View>
-                <Button title="Resolve" onPress={() => goNextPage()}/>
+                <TextInput 
+                    style={styles.input}
+                    onChangeText={(value) => handleChangeText("mistake", value)}
+                    placeholder="Escribe un texto..." 
+                    autoCapitalize="characters"
+                />
+            </View>
+            <View>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => goNextPage()}>
+                    <Text 
+                        style={styles.text}>
+                        ENVIAR
+                    </Text>
+                </TouchableOpacity>
             </View>
         </ScrollView>
     )
@@ -36,14 +53,31 @@ const CreateMuseoHome = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 35
+        padding: 35,
+        backgroundColor: "#629052"
     },  
-    inputGroup: {
-        flex: 1,
-        padding: 0,
+    centered: {
+        alignItems: "center"
+    },
+    image: {
+        margin: 50,
+        width: 300,
+        height: 300,
+        borderRadius: 300/2,
+    },
+    input: {
         marginBottom: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#cccccc'
+        padding: 10,
+        height: 40,
+        backgroundColor: "#ffffff"
+    },
+    button: {
+        alignItems: "center",
+        backgroundColor: "#000000",
+        padding: 10
+    },
+    text: {
+        color: "#ffffff"
     }
 })
 
