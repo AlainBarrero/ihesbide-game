@@ -1,23 +1,23 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, Image, TouchableOpacity, Text, Pressable, Modal} from 'react-native';
+import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal, Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
-const CreateMuseoHome = (props) => {
-    
+const CreateExilioHome = (props) => {
+
     const  [state, setState] = useState({mistake: ""})
     const [modalVisible, setModalVisible] = useState(false)
     
     const handleChangeText = (mistake, value) => {
         setState({...state, [mistake]: value})
-    } 
+    }
 
     const goNextPage = () => {
-        if (state.mistake === 'MUSEO') {
-            props.navigation.navigate("CreateMuseoMistake")
+        if (state.mistake === 'EXILIO') {
+            props.navigation.navigate("CreateExilioMistake") 
         } else {
-            setModalVisible(true) 
+            setModalVisible(true)
         }
     }
 
@@ -26,7 +26,7 @@ const CreateMuseoHome = (props) => {
             <View style={styles.centered}>
                 <Image 
                     style={styles.image}
-                    source={require('../assets/museoa.png')}
+                    source={require('../assets/exilio.png')}
                 />
             </View>
             <View>
@@ -133,4 +133,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CreateMuseoHome;
+export default CreateExilioHome;

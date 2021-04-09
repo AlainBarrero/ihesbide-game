@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, Image, TouchableOpacity, Text} from 'react-native';
+import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal, Image} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
 const CreateErrotatxoHome = (props) => {
-    const  [state, setState] = useState({
-        mistake: ""
-    })
+
+    const  [state, setState] = useState({mistake: ""})
+    const [modalVisible, setModalVisible] = useState(false)
     
     const handleChangeText = (mistake, value) => {
         setState({...state, [mistake]: value})
@@ -15,7 +17,7 @@ const CreateErrotatxoHome = (props) => {
         if (state.mistake === 'ERROTATXO') {
             props.navigation.navigate("CreateErrotatxoMistake")
         } else {
-            alert("Lo sentimos, vuelva a intentarlo")
+            setModalVisible(true)
         }
     }
 
@@ -45,6 +47,30 @@ const CreateErrotatxoHome = (props) => {
                     </Text>
                 </TouchableOpacity>
             </View>
+            <Modal
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <FontAwesomeIcon 
+                            style={styles.modalText}
+                            icon={faExclamationTriangle} 
+                            color="red" 
+                            size={50}/> 
+                        <Text style={styles.modalText}>Lo sentimos, vuelva a intentarlo</Text>
+                        <Pressable
+                            style={[styles.button, styles.modalButton]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                            >
+                            <Text style={styles.text}>OK</Text>
+                        </Pressable>
+                    </View>
+                </View>
+            </Modal>
         </ScrollView>
     )
 }
@@ -77,6 +103,33 @@ const styles = StyleSheet.create({
     },
     text: {
         color: "#ffffff"
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(52, 52, 52, 0.7)"
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 5,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    modalText: {
+        marginBottom: 20
+    },
+    modalButton: {
+        width: 100
     }
 })
 
