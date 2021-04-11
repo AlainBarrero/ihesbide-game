@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal, Image} from 'react-native';
+import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -23,8 +23,14 @@ const CreateErrotatxoMistake = (props) => {
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.centered}>
-                <Text>ERROTATXO-MISTAKE</Text>
+            <View style={styles.mistake}>
+                <Text style={styles.icon}>🧅 + 🧅 + 🧅 = 300</Text>
+                <Text style={styles.icon}>🧅 + 🧅 + 🍙 = 400</Text>
+                <Text style={styles.icon}>🧅 + 🍙 + 🌶️ = 600</Text>
+                <Text style={styles.icon}>🌶️ + 🌶️ + 🌽 = 1000</Text>
+                <Text style={styles.icon}>🌽 + 🌽 + 🧄 = 500</Text>
+                <Text style={styles.icon}>🧄 + 🌶️ + 🍇 = 1400</Text>
+                <Text style={styles.icon}>🧄 + 🍇 + 🥔 = 1800</Text>
             </View>
             <View>
                 <TextInput 
@@ -77,15 +83,14 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 35,
         backgroundColor: "#629052"
-    },  
-    centered: {
-        alignItems: "center"
     },
-    image: {
-        margin: 50,
-        width: 300,
-        height: 300,
-        borderRadius: 300/2,
+    mistake: {
+        marginTop: 50,
+        marginBottom: 50
+    },
+    icon: {
+        fontSize: 30,
+        color: "#ffffff"
     },
     input: {
         marginBottom: 15,

@@ -24,7 +24,10 @@ const CreateIglesiaHome = (props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.centered}>
-                <Text style={styles.text}>IGLESIA-HOME</Text>
+                <Image 
+                    style={styles.image}
+                    source={require('../assets/iglesia.png')}
+                />
             </View>
             <View>
                 <TextInput 

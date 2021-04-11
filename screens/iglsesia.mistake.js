@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal, Image} from 'react-native';
+import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal} from 'react-native';
+import { Table, Rows} from 'react-native-table-component';
 import { ScrollView } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +9,16 @@ const CreateIglesiaMistake = (props) => {
 
     const  [state, setState] = useState({mistake: ""})
     const [modalVisible, setModalVisible] = useState(false)
+
+    const data = [
+        ['5','7','6','0','7','8','9','5','6','9','0','5','6','9'],
+        ['2','2','2','5','7','1','8','4','4','4','9','3','3','3'],
+        ['2','6','2','8','1','1','7','4','9','4','6','5','0','3'],
+        ['0','5','2','8','9','1','5','4','6','4','7','3','3','3'],
+        ['9','9','2','0','8','1','6','4','8','4','9','5','6','3'],
+        ['7','8','2','9','6','1','7','4','4','4','0','3','3','3'],
+        ['5','7','6','0','7','8','9','5','6','9','0','5','6','9']
+    ]
     
     const handleChangeText = (mistake, value) => {
         setState({...state, [mistake]: value})
@@ -23,8 +34,10 @@ const CreateIglesiaMistake = (props) => {
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.centered}>
-                <Text style={styles.text}>IGLESIA-MISTAKE</Text>
+            <View style={styles.mistake}>
+                <Table style={styles.table}>
+                    <Rows data={data} textStyle={styles.row}/>
+                </Table>
             </View>
             <View>
                 <TextInput 
@@ -78,14 +91,16 @@ const styles = StyleSheet.create({
         padding: 35,
         backgroundColor: "#629052"
     },  
-    centered: {
-        alignItems: "center"
+    mistake: {
+        marginTop: 50,
+        marginBottom: 50
     },
-    image: {
-        margin: 50,
-        width: 300,
-        height: 300,
-        borderRadius: 300/2,
+    table: {
+        borderWidth: 0
+    },
+    row: {
+        color: "#ffffff",
+        fontSize: 20
     },
     input: {
         marginBottom: 15,

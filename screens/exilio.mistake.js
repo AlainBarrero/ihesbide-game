@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal, Image} from 'react-native';
+import {View, TextInput, StyleSheet, TouchableOpacity, Text, Pressable, Modal} from 'react-native';
+import { Table, Rows} from 'react-native-table-component';
 import { ScrollView } from 'react-native-gesture-handler';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +9,16 @@ const CreateExilioMistake = (props) => {
 
     const  [state, setState] = useState({mistake: ""})
     const [modalVisible, setModalVisible] = useState(false)
+
+    const  data = [
+        ['A = ☺', 'B = ☻', 'C = ♥', 'D = ♦'],
+        ['E = ♣', 'F = ♠', 'G = •', 'H = ◘'],
+        ['I = ○', 'J = ◙', 'K = ♂', 'L= ♀'],
+        ['M = ♪', 'N = ♫', 'Ñ = ☼', 'O = ►'], 
+        ['P = ◄', 'Q = ↕', 'R = ‼', 'S = ¶'],
+        ['T = §', 'U = ▬', 'V = ↨', 'W = ↑'], 
+        ['X = ↓', 'Y = →', 'Z = ◄', '']
+    ]
     
     const handleChangeText = (mistake, value) => {
         setState({...state, [mistake]: value})
@@ -23,8 +34,11 @@ const CreateExilioMistake = (props) => {
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.centered}>
-                <Text style={styles.text}>EXILIO-MISTAKE</Text>
+            <View style={styles.mistake}>
+                <Table style={styles.table}>
+                    <Rows data={data} textStyle={styles.row}/>
+                </Table>
+                <Text style={styles.code}>☻▬¶♥☺♣♀☺☼►♦♣¶▬♣↓○♀○►</Text>
             </View>
             <View>
                 <TextInput 
@@ -77,15 +91,22 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 35,
         backgroundColor: "#629052"
-    },  
-    centered: {
-        alignItems: "center"
     },
-    image: {
-        margin: 50,
-        width: 300,
-        height: 300,
-        borderRadius: 300/2,
+    mistake: {
+        marginTop: 50,
+        marginBottom: 50
+    }, 
+    table: {
+        borderWidth: 0
+    },
+    row: {
+        color: "#ffffff",
+        fontSize: 20
+    },
+    code: {
+        marginTop: 50,
+        color: "#ffffff",
+        fontSize: 15
     },
     input: {
         marginBottom: 15,

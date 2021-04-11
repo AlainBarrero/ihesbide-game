@@ -24,7 +24,10 @@ const CreateFuenteHome = (props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.centered}>
-                <Text style={styles.text}>FUENTE-HOME</Text>
+                <Image 
+                    style={styles.image}
+                    source={require('../assets/fuente.png')}
+                />
             </View>
             <View>
                 <TextInput 

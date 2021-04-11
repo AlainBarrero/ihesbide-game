@@ -23,8 +23,15 @@ const CreateLegadoMistake = (props) => {
 
     return (
         <ScrollView style={styles.container}>
-            <View style={styles.centered}>
-                <Text style={styles.text}>LEGADO-MISTAKE</Text>
+            <View style={styles.mistake}>
+                <Text style={[styles.text, {fontSize: 16, textAlign: "justify"}]}>
+                    La importancia de su labor entre sus contemporáneos fue principalmente valorada en la esfera internacional, 
+                    puesto que en España se silenciaba la existencia de, entre otras, la cultura vasca. Su trabajo se caracteriza 
+                    por una visión de la cultura vasca alejada de las pasiones. 
+                </Text>
+                <Text style={[styles.text, {fontSize: 16, textAlign: "justify", marginTop: 10}]}>
+                    Es el recorrido que hemos realizado el resultado de toda una vida.
+                </Text>
             </View>
             <View>
                 <TextInput 
@@ -78,14 +85,9 @@ const styles = StyleSheet.create({
         padding: 35,
         backgroundColor: "#629052"
     },  
-    centered: {
-        alignItems: "center"
-    },
-    image: {
-        margin: 50,
-        width: 300,
-        height: 300,
-        borderRadius: 300/2,
+    mistake: {
+        marginTop: 50,
+        marginBottom: 50
     },
     input: {
         marginBottom: 15,

@@ -24,7 +24,10 @@ const CreateLegadoHome = (props) => {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.centered}>
-                <Text style={styles.text}>LEGADO-HOME</Text>
+                <Image 
+                    style={styles.image}
+                    source={require('../assets/legado.png')}
+                />
             </View>
             <View>
                 <TextInput 
